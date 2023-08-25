@@ -1,0 +1,11 @@
+build image
+    - docker build -t node:v1 .
+run image
+    arajin 3000-@ mer compi portna
+    erkrord 4000-@ containeri meji port@
+
+    - docker run -d -p 4000:4000 --name node node:v1
+    or
+    - docker run -d -p 4000:5000 -e PORT=5000 --name node node:v1
+    or
+    - docker run -d -p 4000:5000 --env-file ./config/.env --name node node:v1
