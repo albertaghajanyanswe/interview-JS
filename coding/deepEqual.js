@@ -23,7 +23,9 @@ const deepEqual = (obj1, obj2) => {
 
 const obj1 = { a: 1, b: { c: 2 } };
 const obj2 = { a: 1, b: { c: 2 } };
-const obj3 = { a: 1, b: { c: 3 } };
+const obj3 = { a: 1, b: { d: 2 } };
 
-console.log(deepEqual(obj1, obj2)); // true
-console.log(deepEqual(obj1, obj3)); // false
+console.log('', obj1, '\n     is equal\n', obj2, `\n\n***     ${deepEqual(obj1, obj2)}     ***`); // true
+console.log('\n\n', obj1, '\n     is equal\n', obj3, `\n\n***     ${deepEqual(obj1, obj3)}   ***`); // false
+// console.log(obj1, ' === ', obj2, ' = ', deepEqual(obj1, obj2)); // true
+// console.log(obj1, ' === ', obj3, ' = ', deepEqual(obj1, obj3)); // false

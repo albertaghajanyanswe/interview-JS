@@ -13,7 +13,8 @@ function isValidParentheses(str: string) {
       stack.push(curr);
     } else {
       const lastOpened = stack.pop();
-      if(curr !== openedParentheses[lastOpened]) {
+      const firstClosed = openedParentheses[lastOpened];
+      if(curr !== firstClosed) {
         return false;
       }
     }

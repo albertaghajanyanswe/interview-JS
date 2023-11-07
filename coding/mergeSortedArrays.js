@@ -12,16 +12,19 @@ const merge = (a, b) => {
     if (aItem === undefined) {
       result.push(bItem);
       ++j;
+      continue;
     }
 
     if (bItem === undefined) {
       result.push(aItem);
       ++i;
+      continue;
     }
 
     if (aItem <= bItem) {
       result.push(aItem);
       ++i;
+      continue;
     }
     if( aItem > bItem) {
       result.push(bItem);
@@ -36,8 +39,8 @@ const result = merge(a, b);
 
 console.log(result);
 
-test(() => {
-  let a = [1,3,5,7];
-  let b = [2,4,6,8];
-  expect(merge(a, b).toEqual([1,2,3,4,5,6,7,8]));
-})
+// test(() => {
+//   let a = [1,3,5,7];
+//   let b = [2,4,6,8];
+//   expect(merge(a, b).toEqual([1,2,3,4,5,6,7,8]));
+// })

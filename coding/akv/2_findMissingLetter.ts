@@ -3,8 +3,8 @@ const findMissingLetter = (array: string[]) => {
     return null;
   }
   for (let i = 1; i < array.length; ++i) {
-    const curr = array.join('').charCodeAt(i);
     const prev = array.join('').charCodeAt(i - 1);
+    const curr = array.join('').charCodeAt(i);
 
     if (curr - prev !== 1) {
       return String.fromCharCode(curr);

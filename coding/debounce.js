@@ -1,5 +1,5 @@
 const fetchUrl = (url) => {
-  console.log('thuis = ', this)
+  console.log('this = ', this)
   console.log(`Fetching url: ${url}`)
 }
 
@@ -15,7 +15,7 @@ const user = {
 function debounce(callback, delay) {
   let timer = null;
   return (args) => {
-
+    console.log('args = ', args)
     if (timer) {
       clearTimeout(timer);
     }
