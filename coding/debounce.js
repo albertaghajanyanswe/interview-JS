@@ -1,10 +1,8 @@
 const fetchUrl = (url) => {
-  console.log('this = ', this)
   console.log(`Fetching url: ${url}`)
 }
 
 function fetchUrl2(url) {
-  console.log('thuis = ', this)
   console.log(`Fetching url: ${url} - ${this.firstName}`)
 }
 

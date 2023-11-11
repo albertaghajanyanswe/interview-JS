@@ -4,7 +4,7 @@ function debounce(func, delay) {
   return function (...args) {
     const context = this;
 
-    clearTimeout(timeoutId);
+    // clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       func.apply(context, args);
     }, delay);
@@ -17,9 +17,11 @@ function search(query) {
 }
 
 // Create a debounced version of the function
-const debouncedSearch = debounce(search, 300);
+const debouncedSearch1 = debounce(search, 1000);
+const debouncedSearch2 = debounce(search, 2000);
+const debouncedSearch3 = debounce(search, 3000);
 
 // Call the debounced function
-debouncedSearch("apple");
-debouncedSearch("banana");
-debouncedSearch("cherry");
+debouncedSearch1("apple");
+debouncedSearch2("banana");
+debouncedSearch3("cherry");
