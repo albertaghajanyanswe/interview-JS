@@ -18,7 +18,7 @@ const o1 = foo();
 o1.bar(); // undefined
 o1.baz(); // 20
 
-const o2 = foo.call({ x: 30 });
+// const o2 = foo.call({ x: 30 });
 // // console.log(o2);
 
 // let y = o2.bar;
@@ -27,6 +27,6 @@ const o2 = foo.call({ x: 30 });
 // y(); // 30
 // z(); // undefined
 
-console.log('\n')
-o2.bar(); // 30
-o2.baz(); // 20
+// console.log('\n')
+// o2.bar(); // 30
+// o2.baz(); // 20

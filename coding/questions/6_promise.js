@@ -1,26 +1,34 @@
-function customPromiseAll(promises) {
-  const stack = [promises];
+async function customPromiseAll(promises) {
+  const stack = [...promises];
   const result = [];
+  const error = [];
   const executePromise = () => {
-    const curr = stack.pop();
+    const curr = stack.shift();
     curr.then((res) => {
       result.push(res)
+    }).catch(err => {
+      error.push(err)
     })
     if (stack.length) {
       executePromise()
     }
   }
+  executePromise();
   return result;
 }
 
 const p1 = new Promise((res, rej) => {
-  console.log(1)
+  res(1);
 })
 const p2 = new Promise((res, rej) => {
-  console.log(2)
+  res(2);
 })
 const p3 = new Promise((res, rej) => {
-  console.log(3)
+  res(3);
 })
 
-const res = customPromiseAll([p1, p2, p3]);
+const main = async () => {
+  const res = await customPromiseAll([p1, p2, p3]);
+  console.log('res = ', res)
+}
+main()

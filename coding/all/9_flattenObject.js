@@ -1,19 +1,16 @@
 function flattenObject(obj, prefix = '') {
-  let result = {};
+  const result = {};
 
   for(let key in obj) {
     const value = obj[key];
+    const nestedKey = prefix ? `${prefix}.${key}` : key;
     if (typeof value === 'object' && value !== null  && !Array.isArray(value)) {
-      const nestedKey = prefix ? `${prefix}.${key}` : key;
       const nestedObj = flattenObject(value, nestedKey);
-      result = {...result, ...nestedObj}
+      Object.assign(result, nestedObj);
     } else {
-      const nestedKey = prefix ? `${prefix}.${key}` : key;
       result[nestedKey] = value;
     }
   }
-
-
   return result;
 }
 
