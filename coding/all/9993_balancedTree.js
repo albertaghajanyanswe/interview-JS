@@ -53,3 +53,34 @@ unbalancedRoot.right.right = new TreeNode(6);
 unbalancedRoot.left.left.left = new TreeNode(7);
 
 console.log(isBalanced(unbalancedRoot));
+
+
+/*
+
+class TreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function sortedArrayToBST(nums) {
+  if (nums.length === 0) {
+    return null;
+  }
+
+  const middleIndex = Math.floor(nums.length / 2);
+  const root = new TreeNode(nums[middleIndex]);
+
+  // Рекурсивно строим сбалансированные поддеревья
+  root.left = sortedArrayToBST(nums.slice(0, middleIndex));
+  root.right = sortedArrayToBST(nums.slice(middleIndex + 1));
+
+  return root;
+}
+
+// Пример использования:
+const sortedArray = [1, 2, 3, 4, 5, 6, 7];
+const balancedTree = sortedArrayToBST(sortedArray);
+*/
