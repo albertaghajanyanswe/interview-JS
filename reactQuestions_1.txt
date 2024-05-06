@@ -1,0 +1,54 @@
+Webpack
+
+Its a Module bundler which used to put all js files into single one.
+That used to be necessary because in the browser you basically in order to add javascript you need to place script tag for every js file and when you have big application its not a practical, so webpack will kind of bundle all that it will parse all of them and based on your imports and exports and put them all in the single bundle and then we can apply different optimizations.
+I worked a lot with webpack in the past, basically setting up projects from scratch and doing all kind of configuration
+
+
+
+Tree-shaking
+
+Tree-shaking as in webpack its basically what webpack will do when we ship our bundle in the production and it will basically try to find that code those are modules  that maybe we imported in our code but we were not really using or part of modules and it will basically try to eliminate them, so  our bundle is as small as possible and we get the best web performance.
+
+
+
+Dependency graph
+
+Its basically what webpack builds our entry point.
+When one file depends on another, webpack treats this as a dependency. This allows webpack to take non-code assets, such as images or web fonts and provide them as dependencies for your application.
+When webpack processes our application, it starts from a list of modules defined on the configuration file. Starting from these entry points, webpack recursively builds a dependency graph that includes every module your application needs, then bundles all of those modules into a small number of bundles - often, only one - to be loaded by the browser.
+
+
+
+CSS in js
+
+its appeared because we writing all this javascript and we have a lot of interactivity, and basically we want to change css styles when a certain state or certain variable changes, and css in js allow us to have dynamic css, where you click button and some css changesimmediatly you could do that with classes like you want to assign different class to an element but its just a lot easier if you could just swao colors or directly do thind with javascript varables inside css
+That was not possible before because you had static css files, and with css in js we write our css inside js file and then webpack will basically somehow extract that and build different classes and atach them to the HTML dom at the run time, but we dont need to worry  about that 
+
+
+
+Error bounderies
+
+its help you limit the impact of an error so if you have a data fetching component you can wrap it in error baundary and that will at some level localize the error so does not go up the compoennt three and you dont show the whole application broken but you can actually show error only for that component, so its allow you to localize and have a pretictable UI and also have no layout shift when you have the servers thay can totaly  destroy the UI if they are not managed
+
+if we try to abused this effect and for example change some state variable inside this effect it should trigger rerender, so if you are not careful and you abuse them you end up having so many rerenders in your components and of cource rerenders of parents will cause rerender of childs.
+breackdown
+
+
+
+Testing piramid 
+
+End to end test (Testing all features,)
+End-to-end tests simulate end users and their interactions with the application. They cover user journeys from beginning to end and ensure all the integrated pieces of the application work as expected. End-to-end tests boost confidence in the overall functional correctness of the application.
+
+Integration
+Integration tests verify whether two or more units work together correctly after combining
+
+Unit testing (for buttons ,inputs components, functions)
+Reusable components
+
+ 
+
+Balance for writing testing
+
+When we have only end to and test and test goes fail we can understand that we have a bug but we cannot localize the right component, but if we have also unit and integration test we can find the error more easy

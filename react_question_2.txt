@@ -1,0 +1,192 @@
+1. Temporal dead zone (TDZ)
+
+The temporal dead zone (TDZ) is a specific period in the execution of JavaScript code where
+variables declared with let and const exist but cannot be accessed or assigned any value.
+During this phase, accessing or using the variable will result in a ReferenceError.
+
+To better understand the TDZ, let’s consider an example:
+
+console.log(x) // ReferenceError cannot access  x before initialization
+lex x = 10;
+
+
+2. Explain how does browser understand jsx/js ?
+
+Browsers don't understand JSX directly. JSX (JavaScript XML) is a syntax extension for JavaScript
+often used with React to describe what the UI should look like. Before a browser can render JSX,
+it needs to be transformed into regular JavaScript.
+This process typically involves two steps:
+
+Transpilation:
+  JSX is transpiled into regular JavaScript using tools like Babel.
+  Babel takes JSX code and converts it into equivalent JavaScript code that browsers can understand.
+  For example:JSX:
+    const element = <h1>Hello, world!</h1>;
+  Transpiled JavaScript:
+    var element = React.createElement('h1', null, 'Hello, world!');
+
+Here, React.createElement() is a function provided by React to create virtual DOM elements.
+
+Bundling:
+  After transpilation, JavaScript files, including the transpiled JSX,
+  are bundled together using tools like Webpack or Rollup. Bundling combines all the JavaScript code,
+  including JSX, into one or more files that are optimized for the browser.
+  Once these steps are complete, the browser receives the bundled JavaScript file,
+  which contains plain JavaScript code without any JSX. Browsers understand JavaScript,
+  so they can execute this code to render the UI as intended.
+
+In summary, browsers don't directly understand JSX; it needs to be transpiled into regular JavaScript before it can be executed in the browser.
+This transpilation process is typically handled by build tools like Babel,
+and the resulting JavaScript code is what the browser can understand and execute.
+
+
+3. Promises
+
+Promises in JavaScript are objects representing the eventual completion or failure of an asynchronous operation.
+They allow you to handle asynchronous operations more easily, making code more readable and manageable.
+Promises have three states: pending, fulfilled, or rejected.
+
+We can create a new Promise object using the new Promise() constructor.
+It takes a function with two parameters, resolve and reject.
+
+const myPromise = new Promise((resolve, reject) => {
+    // Asynchronous operation
+    // If successful, call resolve()
+    // If error occurs, call reject()
+});
+
+
+4. Pure functions
+
+Pure functions are functions that have two main characteristics:
+
+Deterministic:
+  A pure function always produces the same output for the same input.
+  It does not depend on any external state that may change during its execution.
+  This property ensures predictability and makes debugging easier.
+No Side Effects:
+  A pure function does not modify variables outside of its scope,
+  such as changing the state of the program, modifying global variables,
+  or performing I/O operations. This property makes pure functions easier to reason about and test.
+
+
+5. Polyfill
+
+  A "polyfill" is a piece of code (usually JavaScript) that provides the functionality of a feature
+  that is not natively supported by a browser. It allows developers to use modern features of JavaScript
+  even in older browsers that do not support them.
+
+
+  if (!Array.prototype.forEach) {
+      Array.prototype.forEach = function(callback) {
+          if (this == null) {
+              throw new TypeError('Array.prototype.forEach called on null or undefined');
+          }
+
+          if (typeof callback !== 'function') {
+              throw new TypeError(callback + ' is not a function');
+          }
+
+          const array = Object(this);
+          const length = array.length >>> 0;
+
+          for (let i = 0; i < length; i++) {
+              if (i in array) {
+                  callback.call(array[i], i, array);
+              }
+          }
+      };
+  }
+
+
+
+6. ES6 Features:
+
+  Arrow Functions, Template Literals (`Hello, ${name}!`), let & const, classes, Promises
+  Destructuring Assignment
+    const person = { name: 'John', age: 30 };
+    const { name, age } = person;
+  Spread and Rest Operators
+
+
+7. ES7 Features:
+
+  Async/Await, Includes() (Array method),
+  Exponential Operator (2**2, Math.pow(2, 2))
+  Object.entries(): Returns an array of a given object's own enumerable property [key, value] pairs.
+
+
+8. Arrow functions
+
+  Arrow functions provide several conveniences that make them useful in JavaScript development
+  - Shorter Syntax
+  - Lexical this Binding: Arrow functions do not have their own this context.
+    Instead, they inherit this from the surrounding code
+  - Arrow functions do not have their own arguments object. This can prevent unexpected behavior and makes code more predictable.
+  - No new Keyword
+  - Implicit Return
+
+9. Event bubbling
+  Event bubbling is a phenomenon in which an event triggered on a nested element
+  propagates up through its ancestors in the DOM tree, triggering event handlers on each ancestor element.
+  This means that when an event occurs on an element,
+  it will also trigger the same event on all of its parent elements, up to the root of the document.
+
+  to stop event bubbling - event.stopPropagation();
+
+
+10. Semantic HTML
+
+  Semantic HTML tags provide context about the content they enclose,
+  making it easier for both humans and machines (like search engines or screen readers)
+  to understand the structure and purpose of the content.
+
+  header, footer, nav, main, article, section, aside (sidebar)
+
+
+11. CSS box modal
+
+  A CSS box model is a fundamental concept in CSS layout design
+  that describes the structure of every HTML element. The CSS box model consists of four main parts:
+  content, padding, border, and margin.
+  These parts form a rectangular box around an element, determining its size, spacing, and appearance.
+
+    Content: This is the actual content of the element. It is surrounded by the padding, border, and margin.
+    Padding: Padding is the space between the content and the element's border.
+    Border: The border is a line that surrounds the padding and content of the element.
+    Margin: Margin is the space outside the element's border.
+
+
+12. CSS specificity
+
+  CSS specificity is a set of rules that determines which styles should be applied to an element when multiple conflicting styles are defined
+
+    - Inline Styles
+    - ID (#btn: {})
+    - class (.btn: {})
+    - tag (button: {})
+
+
+13. CSS  positioning elements
+
+  - Static Positioning:
+      This is the default position for all elements. Elements are positioned according to the normal flow of the document.
+      You cannot change the position of statically positioned elements using properties like top, left, right, or bottom.
+
+  - Relative Positioning:
+      Relative positioning allows you to position an element relative to its normal position in the document flow.
+      You can use top, left, right, or bottom properties to offset the element from its normal position.
+
+  - Absolute Positioning:
+      Absolute positioning removes the element from the normal flow of the document and positions it
+      relative to its nearest positioned ancestor (or to the initial containing block if there's no positioned ancestor).
+      Use top, left, right, or bottom properties to specify the position.
+
+  - Fixed Positioning:
+      Fixed positioning positions the element relative to the browser window, so it remains fixed even when the page is scrolled.
+      Use top, left, right, or bottom properties to specify the position.
+
+  - Sticky Positioning:
+      Sticky positioning is a hybrid of relative and fixed positioning.
+      The element is treated as relative positioned until it crosses a specified threshold, after which it is treated as fixed positioned.
+      Use top, left, right, or bottom properties to specify the position, along with z-index to control the stacking order.
