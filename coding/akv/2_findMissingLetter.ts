@@ -1,5 +1,5 @@
 const findMissingLetter = (array: string[]) => {
-  if (arr.length <= 1) {
+  if (array.length <= 1) {
     return null;
   }
   for (let i = 1; i < array.length; ++i) {
@@ -7,7 +7,7 @@ const findMissingLetter = (array: string[]) => {
     const curr = array.join('').charCodeAt(i);
 
     if (curr - prev !== 1) {
-      return String.fromCharCode(curr);
+      return String.fromCharCode(prev+1);
     }
   }
   return null;

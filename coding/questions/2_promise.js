@@ -32,7 +32,7 @@ Promise
   // .then(p => console.log(p))
 
 // Error: a1d3d4c1
-  Promise
+//   Promise
   // .resolve('a')
   // .then(p => p + '1', p => p + '2') // kashxate 1 callback@ qani vor resolve e exel
   // .then(p => p + 'd3')

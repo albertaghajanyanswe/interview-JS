@@ -161,10 +161,10 @@ No Side Effects:
 
   CSS specificity is a set of rules that determines which styles should be applied to an element when multiple conflicting styles are defined
 
-    - Inline Styles
-    - ID (#btn: {})
-    - class (.btn: {})
-    - tag (button: {})
+    - Inline Styles     - 1000
+    - ID (#btn: {})     - 100
+    - class (.btn: {})  - 10
+    - tag (button: {})  - 1
 
 
 13. CSS  positioning elements
