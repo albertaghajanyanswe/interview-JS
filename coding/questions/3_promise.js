@@ -1,26 +1,41 @@
 function foo(callback) {
-  setTimeout(function() {
-      callback("A");
+  setTimeout(function () {
+    callback("A");
   }, Math.random() * 100);
 }
 
 function bar(callback) {
-  setTimeout(function() {
-      callback("B");
+  setTimeout(function () {
+    callback("B");
   }, Math.random() * 100);
 }
 
 function baz(callback) {
-  setTimeout(function() {
-      callback("C");
+  setTimeout(function () {
+    callback("C");
   }, Math.random() * 100);
 }
 
 function promisify(fn) {
   return new Promise((resolve) => {
-      fn(resolve);
+    fn(resolve);
   });
 }
+
+const p1 = promisify(foo);
+const p2 = promisify(bar);
+const p3 = promisify(baz);
+
+const main = async () => {
+  const r1 = await p1;
+  const r2 = await p2;
+  const r3 = await p3;
+
+  console.log("1 - ", r1);
+  console.log("2 - ", r2);
+  console.log("3 - ", r3);
+};
+main();
 
 // solution 1
 
@@ -40,34 +55,28 @@ function promisify(fn) {
 //   foo(res)
 // }).then((res) => {
 //   console.log('1 - ', res)
-//   return new Promise((res) => {
-//     bar(res)
-//   })
+//   return new Promise((res) => bar(res))
 // }).then((res) => {
 //   console.log('2 - ', res)
-//   return new Promise((res) => {
-//     baz(res)
-//   })
+//   return new Promise((res) => baz(res))
 // }).then((res) => {
 //   console.log('3 - ', res)
 // })
 
 // solution 3
-function print(val) {
-  console.log(val)
-}
 
-const p1 = promisify(foo)
-const p2 = promisify(bar)
-const p3 = promisify(baz)
 
-const main = async () => {
-  const r1 = await p1;
-  const r2 = await p2;
-  const r3 = await p3;
+// SOLUTION 3
 
-  console.log('1 - ', r1);
-  console.log('2 - ', r2);
-  console.log('3 - ', r3);
-}
-main();
+// const runInOrder = async () => {
+//   const r1 = await new Promise((res) => foo(res));
+//   console.log(r1);
+
+//   const r2 = await new Promise((res) => bar(res));
+//   console.log(r2);
+
+//   const r3 = await new Promise((res) => baz(res));
+//   console.log(r3);
+// };
+
+// runInOrder();
